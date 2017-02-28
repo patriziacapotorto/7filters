@@ -17,12 +17,12 @@
 <body ng-app="app">
     <div class="container">
         <div ng-controller="UsersCtrl">
-            <h1>{{titolo | uppercase}}</h1>
-            <h2>Esercizio del giorno {{data | date:'d/MM/yyyy' }}</h2>
+            <h1>{{titolo}}</h1>
+            <h2>Esercizio del giorno {{data }}</h2>
             <label>Ricerca generica</label>
-            <input type="text" class="form-control" ng-model="ricerca">
+            <input type="text" class="form-control">
             <label>Ricerca per lingua</label>
-            <select class="form-control" ng-model="lingua">
+            <select class="form-control">
                <option>Tutte</option>
                <option>Italiano</option>
                <option>Inglese</option>
@@ -31,17 +31,17 @@
             <label>Cerca per sesso</label>
             <div class="radio">
                 <label>
-          <input type="radio" ng-model="sesso" value=""> Entrambi
+          <input type="radio" value=""> Entrambi
         </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio"  ng-model="sesso" value="Maschio"> Maschio
+                    <input type="radio"  value="Maschio"> Maschio
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio"  ng-model="sesso" value="Femmina"> Femmina
+                    <input type="radio"  value="Femmina"> Femmina
                 </label>
             </div>
             <table class="table">
@@ -54,15 +54,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="utente in (risultato = (listaUtenti | filter:ricerca | filtroLingua:lingua |filtroSesso:sesso |limitTo: 15))">
-                        <td>{{utente.nome}}</td>
-                        <td>{{utente.cognome}}</td>
-                        <td>{{utente.sesso}}</td>
-                        <td>{{utente.lingua}}</td>
+                    <tr>
                     </tr>
                 </tbody>
             </table>
-            <p>Risultati ricerca: {{risultato.length}}</p>
+            <p>Risultati ricerca:</p>
         </div>
     </div>
     <script src="node_modules/angular/angular.min.js"></script>
@@ -70,7 +66,6 @@
     <!-- include items service -->
     <script src="users.services.js"></script>
     <script src="users.controller.js"></script>
-    <script src="users.filter.js"></script>
     </div>
 </body>
 
