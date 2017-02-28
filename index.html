@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <meta name="fragment" content="!">
+    <meta name="description" content="MEAN app for the Artoo Campus">
+    <meta name="author" content="ArtooCampus">
+    <meta name="application-name" content="Filters">
+    <meta name="viewport" content="width=device-width">
+    <title>Artoo Campus - Filters</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body ng-app="app">
+    <div class="container">
+        <div ng-controller="UsersCtrl">
+            <h1>{{titolo | uppercase}}</h1>
+            <h2>Esercizio del giorno {{data | date:'d/MM/yyyy' }}</h2>
+            <label>Ricerca generica</label>
+            <input type="text" class="form-control" ng-model="ricerca">
+            <label>Ricerca per lingua</label>
+            <select class="form-control" ng-model="lingua">
+               <option>Tutte</option>
+               <option>Italiano</option>
+               <option>Inglese</option>
+               <option>Francese</option>
+            </select>
+            <label>Cerca per sesso</label>
+            <div class="radio">
+                <label>
+          <input type="radio" ng-model="sesso" value=""> Entrambi
+        </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio"  ng-model="sesso" value="Maschio"> Maschio
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio"  ng-model="sesso" value="Femmina"> Femmina
+                </label>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Sesso</th>
+                        <th>Lingua</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="utente in (risultato = (listaUtenti | filter:ricerca | filtroLingua:lingua |filtroSesso:sesso |limitTo: 15))">
+                        <td>{{utente.nome}}</td>
+                        <td>{{utente.cognome}}</td>
+                        <td>{{utente.sesso}}</td>
+                        <td>{{utente.lingua}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Risultati ricerca: {{risultato.length}}</p>
+        </div>
+    </div>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <!-- include items service -->
+    <script src="users.services.js"></script>
+    <script src="users.controller.js"></script>
+    <script src="users.filter.js"></script>
+    </div>
+</body>
+
+</html>
