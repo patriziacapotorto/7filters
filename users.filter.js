@@ -10,4 +10,17 @@ angular.module('app').filter('filtroLingua', function () {
          };
       };
 
+})
+.filter('filtroSesso', function () {
+
+      return function(lista,sesso){
+         if (sesso=="Entrambi") {
+           return lista;
+         }else {
+           return lista.filter(function(el){
+             return el.sesso == sesso;
+           });
+         };
+      };
+
 });

@@ -8,5 +8,7 @@ angular.module('app').controller('UsersCtrl', function ($scope,$interval,UtentiS
 
     $scope.utenti = UtentiService.getUtenti();
     $scope.lingua = 'Tutte';
+    $scope.sesso = 'Entrambi';
+
 
 });

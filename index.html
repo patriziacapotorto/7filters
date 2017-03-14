@@ -31,17 +31,17 @@
             <label>Cerca per sesso</label>
             <div class="radio">
                 <label>
-          <input type="radio" value=""> Entrambi
+          <input type="radio" value="Entrambi" name="sesso" ng-model="sesso"> Entrambi
         </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio"  value="Maschio"> Maschio
+                    <input type="radio" name="sesso"  value="Maschio" ng-model="sesso"> Maschio
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio"  value="Femmina"> Femmina
+                    <input type="radio"  value="Femmina" name="sesso" ng-model="sesso"> Femmina
                 </label>
             </div>
             <table class="table">
@@ -54,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="el in (risultato = (utenti | filter:ricerca | filtroLingua:lingua))">
+                    <tr ng-repeat="el in (risultato = (utenti | filter:ricerca | filtroLingua:lingua | filtroSesso:sesso))">
                       <td>{{el.nome}}</td>
                       <td>{{el.cognome}}</td>
                       <td>{{el.sesso}}</td>
